@@ -1,5 +1,5 @@
 # train
-data_dir: data/fonts-hdf5
+data_dir: dump
 data_meta: meta/kor_split.json
 language: kor
 batch_size: 12

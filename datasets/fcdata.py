@@ -6,7 +6,7 @@ MIT license
 import h5py as h5
 from torchvision import transforms
 
-from . import thai_decompose as thai
+# from . import thai_decompose as thai
 
 
 class FCData:
@@ -35,16 +35,18 @@ class HDF5Data(FCData):
         self.fn2path = {}
         self.cmap = {}
         self.n_items = 0
-
+        n = 0
         # chars: union of all chars
+        print(hdf5_paths)
         for path in hdf5_paths:
             with h5.File(path, 'r') as f:
                 font_name = f['dataset'].attrs['font_name']
+                print(font_name)
+                
                 self.fn2path[font_name] = path
                 # [:] for batch read
                 char2idx = self.make_char2idx(f['dataset']['chars'][:])
                 self.cmap[font_name] = char2idx
-
                 self.n_items += len(char2idx)
 
         # indexing
@@ -71,7 +73,6 @@ class HDF5Data(FCData):
             }
         else:
             raise ValueError(self.language)
-
         return char2idx
 
     def is_avail(self, font_name, char):

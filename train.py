@@ -236,7 +236,6 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize([0.5], [0.5])
     ])
-
     # setup data
     hdf5_data, meta = setup_data(cfg, transform)
 

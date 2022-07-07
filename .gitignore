@@ -13,6 +13,7 @@ runs-back/
 *.sh
 tags*
 test*
+dump
 
 checkpoints
 data
